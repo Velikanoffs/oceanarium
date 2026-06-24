@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Океанариум — Тайны Океана</title>
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
     <style>
-        /* Базовые стили для океанской атмосферы */
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 0;
             background-color: #030f26;
             color: #e2f1ff;
             line-height: 1.6;
@@ -25,16 +26,9 @@
         header h1 {
             margin: 0;
             color: #00d2ff;
-            font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-        }
-
-        header p {
-            margin: 5px 0 0 0;
-            color: #8ab4f8;
-            font-size: 1.1rem;
         }
 
         .container {
@@ -50,29 +44,17 @@
             border-radius: 15px;
             margin-bottom: 40px;
             border: 1px solid rgba(0, 210, 255, 0.2);
-            box-shadow: inset 0 0 20px rgba(0, 210, 255, 0.05);
         }
 
-        /* Контейнер-заготовка под будущую 3D-модель (Шаг 3) */
-        .model-container {
+        /* ШАГ 3: Стили для 3D-модели */
+        model-viewer {
             width: 100%;
-            height: 400px;
+            height: 500px; /* Увеличили высоту для наглядности */
             background-color: #051838;
-            border: 2px dashed #00d2ff;
             border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin: 25px auto;
-            max-width: 700px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .model-placeholder-text {
-            color: #8ab4f8;
-            font-style: italic;
-            text-align: center;
-            padding: 20px;
+            --poster-color: transparent;
+            outline: none;
         }
 
         .info-section {
@@ -85,29 +67,15 @@
             background: #071d44;
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border-left: 5px solid #00d2ff;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #00d2ff;
-            font-size: 1.3rem;
         }
 
         footer {
             text-align: center;
             padding: 25px;
             margin-top: 60px;
-            font-size: 0.9rem;
-            color: #648dae;
-            border-top: 1px solid rgba(0, 210, 255, 0.1);
             background-color: #020813;
+            color: #648dae;
         }
     </style>
 </head>
@@ -120,31 +88,32 @@
 
     <div class="container">
         <section class="hero">
-            <h2>Интерактивная выставка</h2>
-            <p>Мы собираем удивительные экспонаты со всех уголков планеты. Скоро здесь появится главный обитатель нашей экспозиции!</p>
+            <h2>Главный экспонат: Морская черепаха</h2>
+            <p>Используйте мышь, чтобы вращать модель, и колесико для масштабирования</p>
             
-            <!-- Сюда на 3 этапе мы легко вставим <model-viewer> -->
-            <div class="model-container">
-                <div class="model-placeholder-text">
-                    [ Место для интерактивной 3D-модели «Морская черепаха» ]
-
-                    <small style="color: #648dae;">Будет интегрировано на Шаге 3</small>
-                </div>
-            </div>
+            <model-viewer 
+                src="https://modelviewer.dev/shared-assets/models/original_green_sea_turtle.glb" 
+                alt="3D модель морской черепахи"
+                auto-rotate 
+                camera-controls 
+                shadow-intensity="1" 
+                exposure="1"
+                ar>
+            </model-viewer>
         </section>
 
         <section class="info-section">
             <div class="card">
                 <h3>Коралловый риф</h3>
-                <p>Яркая и хрупкая экосистема, населенная сотнями видов тропических рыб и живых кораллов.</p>
+                <p>Яркая и хрупкая экосистема, населенная сотнями видов тропических рыб.</p>
             </div>
             <div class="card">
                 <h3>Зона акул</h3>
-                <p>Глубоководный резервуар, где вы можете вблизи рассмотреть величественных и грозных хищников океана.</p>
+                <p>Глубоководный резервуар с величественными хищниками океана.</p>
             </div>
             <div class="card">
                 <h3>Морские черепахи</h3>
-                <p>Древние и грациозные обитатели морей, способные преодолевать тысячи километров в поисках родных берегов.</p>
+                <p>Древние обитатели морей, грациозно скользящие сквозь толщу воды.</p>
             </div>
         </section>
     </div>
